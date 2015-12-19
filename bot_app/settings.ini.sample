@@ -1,0 +1,4 @@
+; uniwherebot Configuration File
+[main]
+environment = DEBUG_OR_PRODUCTION
+auth_token = POST_TOKEN
