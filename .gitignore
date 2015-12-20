@@ -2,5 +2,4 @@
 *.DS_Store
 env
 *.ini
-mydb.py
-setdb.py
+tmp/
