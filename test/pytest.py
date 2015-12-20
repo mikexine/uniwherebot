@@ -1,12 +1,25 @@
 import requests
 import json
+import ConfigParser
 
-# Target Url and auth token, comment to swith between local and production
-Url = 'http://localhost:5000/receive'
-AuthToken = 'mydebugtoken'
+config = ConfigParser.ConfigParser()
+config.read('test_settings.ini')
+Ask = raw_input('Test in debug or production? Insert D or P: ')
+EnvSet = False
 
-# Url = 'http://46.101.123.6/receive'
-# AuthToken = 'difficult'
+while EnvSet is not True:
+    if Ask == 'D':
+        Url = config.get('debug', 'url')
+        AuthToken = config.get('debug', 'auth_token')
+        EnvSet = True
+    elif Ask == 'P':
+        Url = config.get('production', 'url')
+        AuthToken = config.get('production', 'auth_token')
+        EnvSet = True
+    else:
+        Ask = raw_input('Test in debug or production? Insert D or P: ')
+
+print Url
 
 # POST data
 Data = {

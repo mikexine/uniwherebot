@@ -1,0 +1,8 @@
+; uniwherebot Configuration File
+[debug]
+url = ADDRESS_LOCAL
+auth_token = POST_TOKEN
+
+[production]
+url = ADDRESS_PRODUCTION
+auth_token = POST_TOKEN
