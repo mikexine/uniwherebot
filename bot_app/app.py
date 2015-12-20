@@ -33,6 +33,11 @@ def receive():
     return render_template('receive.html')
 
 
+@app.route('/loaderio-d1f7f5615acb3e97d9d921741aaeddf8/')
+def loaderio():
+    return render_template('verify.html')
+
+
 @app.route('/receive', methods=['POST'])
 def reply():
     # get the message
@@ -46,6 +51,16 @@ def reply():
             'your token': AuthHeader
         }
         # return the reply
+    return jsonify(ReplyMessage)
+
+
+@app.route('/benchmark', methods=['POST'])
+def stats():
+    # get the message
+    ReplyMessage = {
+        'text': 'Hello, this is benchmark!',
+        'to': 'user123456'
+    }
     return jsonify(ReplyMessage)
 
 
