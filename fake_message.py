@@ -2,11 +2,11 @@ import requests
 import json
 
 # Target Url and auth token, comment to swith between local and production
-# Url = 'http://localhost:5000/receive'
-# AuthToken = 'mydebugtoken'
+Url = 'http://localhost:5000/receive'
+AuthToken = 'mydebugtoken'
 
-Url = 'http://46.101.123.6/receive'
-AuthToken = 'difficult'
+# Url = 'http://46.101.123.6/receive'
+# AuthToken = 'difficult'
 
 # Faking messages
 try:

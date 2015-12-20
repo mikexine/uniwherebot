@@ -5,7 +5,8 @@ import arrow
 import ConfigParser
 from BotReply import BotReply
 
-# get configs from settings.ini
+# initialize BotReply get configs from settings.ini
+br = BotReply()
 config = ConfigParser.ConfigParser()
 config.read('./settings.ini')
 Environment = config.get('main', 'environment')
@@ -15,16 +16,13 @@ if Environment == 'debug':
 else:
     IsDebug = False
 
-# initialize BotReply
-br = BotReply()
-
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
     MyTime = arrow.utcnow().format('YYYY-MM-DD HH:mm:ss ZZ')
-    return 'Hello Uniwhere! UtcNow: ' + str(MyTime) + ' ' + Environment
+    return 'Hello Uniwhere user! UtcNow: ' + str(MyTime) + ' ' + Environment
 
 
 @app.route('/receive', methods=['POST'])
