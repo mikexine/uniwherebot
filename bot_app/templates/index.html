@@ -1,0 +1,15 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Uniwhere Bot Api</h1>
+<p>Small "docs" for the Uniwhere Bot Flask App.</p>
+<p>For all API calls, you should set the <code>content-type</code> in the call's header to <code>application/json</code>.</p>
+<p>Authentication is supported, but in a very elementary way. When POSTing, you must to include in the call's header also an <code>auth-token</code> field, and set it to a certain token. To obtain the token, contact me.</p>
+<p>Available methods:
+	<ul>
+		<li><a href="/call_receive">/receive call</a></li>
+	</ul>
+</p>
+
+{% endblock %}

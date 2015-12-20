@@ -1,0 +1,54 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>/receive call</h1>
+<p>The only method that is currently allowed is a <code>POST request</code>.</p>
+<p>Endpoint: <code>/receive</code> - full url: <code>http://uniwhere.xyz/receive</code>.</p>
+<table class="table">
+	<thead>
+		<tr>
+		<th>Header Parameter</th>
+			<th>Set to</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code>content-type</code></td>
+			<td><code>application/json</code></td>
+		</tr>
+		<tr>
+			<td><code>auth-token</code></td>
+			<td>Your POST token</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+	<thead>
+		<tr>
+		<th>Body Parameter</th>
+			<th>Set to</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code>from</code></td>
+			<td>String with the sender's ID or Username.</td>
+		</tr>
+		<tr>
+			<td><code>text</code></td>
+			<td>Text to elaborate.</td>
+		</tr>
+	</tbody>
+</table>
+<p>You will get a JSON object in the response to your <code>POST request</code>. A sample example is the following: </p>
+<pre>
+{ 
+  'text': 'Hello this is the answer', 
+  'to': 'Send this message to this user!'
+  }
+</pre>
+
+{% endblock %}

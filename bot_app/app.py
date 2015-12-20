@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, jsonify, request
-import arrow
+from flask import Flask, jsonify, request, render_template
 import ConfigParser
 from BotReply import BotReply
 
@@ -21,8 +20,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    MyTime = arrow.utcnow().format('YYYY-MM-DD HH:mm:ss ZZ')
-    return 'Hello Uniwhere user! UtcNow: ' + str(MyTime) + ' ' + Environment
+    return render_template('index.html')
+
+
+@app.route('/contacts')
+def contacts():
+    return render_template('contacts.html')
+
+
+@app.route('/call_receive')
+def receive():
+    return render_template('receive.html')
 
 
 @app.route('/receive', methods=['POST'])

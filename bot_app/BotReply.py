@@ -31,6 +31,7 @@ class BotReply:
         if Keyword is None:
             return random.choice(boh)
         else:
+            db = pickledb.load('uniwhereDB.db', False)
             return db.get(Keyword)['text']
 
     def Reply(self, Message):
