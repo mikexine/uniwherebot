@@ -1,3 +1,5 @@
+Try this on http://uniwhere.xyz
+
 Steps to get this running - I hope: 
 
 - clean ubuntu server (14.04) with ssh keys set up

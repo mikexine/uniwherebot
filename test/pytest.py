@@ -1,6 +1,7 @@
 import requests
 import json
 import ConfigParser
+import arrow
 
 config = ConfigParser.ConfigParser()
 config.read('test_settings.ini')
@@ -24,7 +25,7 @@ print Url
 # POST data
 Data = {
     'from': 'Michele',
-    'text': 'A sample text!'
+    'text': 'la mensa piovego ha fame in forcellini con jappelli!'
 }
 
 # POST request without auth_token, result expected: error: unauthorized
@@ -50,7 +51,11 @@ Head = {
 Msg = requests.post(Url, headers=Head, data=json.dumps(Data))
 print Msg.json()
 
-# stress test ??
-# for x in range(10000):
-#     Msg = requests.post(Url, headers=Headers, data=json.dumps(Data))
-#     print Msg.json()
+# stress test, currently 1000 requests in 6 ms (locally)
+start = arrow.utcnow().timestamp
+for x in range(1000):
+    Msg = requests.post(Url, headers=Headers,
+                        data=json.dumps(Data), timeout=30)
+    # print Msg.json()
+end = arrow.utcnow().timestamp
+print 'Start: %s\nEnd: %s\nTime: %s' % (str(start), str(end), str(end-start))

@@ -56,7 +56,6 @@ def reply():
 
 @app.route('/benchmark', methods=['POST'])
 def stats():
-    # get the message
     ReplyMessage = {
         'text': 'Hello, this is benchmark!',
         'to': 'user123456'
