@@ -6,20 +6,32 @@
 import pickledb
 import requests
 
-url = "http://unipd.xyz/"
+url = "http://unidata.xyz/api/unipd/"
 
 # getting keyboardcommands
 db = pickledb.load('uniwhereDB.db', False)
 r = requests.get(url + 'mensa', timeout=30)
 data = r.json()
-mensaDict = data[1]['mensa']
-lastUpdate = str(data[0]['mensa']['last_update'])
+lastUpdate = str(data['last_update'])
+data.pop('last_update', None)
+mensaDict = data
+
 for key in mensaDict:
     menuDict = {'primo': "", 'secondo': "", 'contorno': "", 'dessert': ""}
     orari = mensaDict[key]['orari']
     indirizzo = mensaDict[key]['indirizzo']
-    calendario = 'Pranzo: ' + mensaDict[key]['calendario']['pranzo'] +\
-        '\nCena: ' + mensaDict[key]['calendario']['cena']
+    if mensaDict[key]['calendario']['pranzo'] == 0:
+        pr = "chiuso"
+    else:
+        pr = "aperto"
+
+    if mensaDict[key]['calendario']['cena'] == 0:
+        ce = "chiuso"
+    else:
+        ce = "aperto"
+
+    calendario = 'Pranzo: ' + pr +\
+        '\nCena: ' + ce
     telefono = mensaDict[key]['telefono']
     coord = mensaDict[key]['coord']
     for mkey in mensaDict[key]['menu']:
@@ -43,7 +55,7 @@ db.dump()
 
 r = requests.get(url + 'aulastudio', timeout=30)
 data = r.json()
-asDict = data[0]['aulastudio']
+asDict = data
 for key in asDict:
     orari = asDict[key]['orario']
     indirizzo = asDict[key]['indirizzo']

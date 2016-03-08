@@ -37,7 +37,7 @@ class BotReply:
     def Reply(self, Message):
         # prepare the reply
         User = Message['from']
-        RawText = Message['text'].encode('ascii', 'ignore')
+        RawText = Message['text'].encode('ascii')
         Text = RawText.translate(None, string.punctuation)
         Keyword = BotReply.GetKeyword(Text)
         ReplyText = BotReply.CreateReply(Keyword)
